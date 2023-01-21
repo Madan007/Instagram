@@ -1,29 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {StyleSheet, View} from 'react-native';
 
-import colors from './src/theme/colors';
-import fonts from './src/theme/fonts';
-
+import HomeScreen from '@screens/Home/HomeScreen';
 const App = () => {
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text style={{color: colors.primary, fontSize: fonts.size.xl}}>
-        Hello World New
-        <MaterialCommunityIcons
-          name="account-cowboy-hat"
-          size={fonts.size.xl}
-        />
-      </Text>
+    <View style={styles.application}>
+      <HomeScreen />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  application: {
+    flex: 1,
+    marginTop: 50,
+  },
+});
 
 export default App;
