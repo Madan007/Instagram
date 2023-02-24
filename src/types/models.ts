@@ -26,3 +26,22 @@ export interface IComment {
   comment: string;
   user: IUser;
 }
+
+export interface IProfilePost {
+  id: string;
+  createdAt: string;
+  images?: string[];
+  image?: string;
+  description: string;
+}
+
+export interface IProfile {
+  user: {
+    id: string;
+    image: string;
+    name: string;
+    bio: string;
+    username: string;
+    posts: IProfilePost[];
+  };
+}

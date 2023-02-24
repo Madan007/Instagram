@@ -24,6 +24,14 @@ const Carousal = (props: ICarousal) => {
 
   const {images = [], onDoublePress} = props;
 
+  const handleDoublePress = () => {
+    const now = Date.now(); // timestamp
+    if (now - lastTap < 300) {
+      onDoublePress();
+    }
+    lastTap = now;
+  };
+
   const viewabilityConfig: ViewabilityConfig = {
     waitForInteraction: true,
     itemVisiblePercentThreshold: 51,
@@ -37,14 +45,6 @@ const Carousal = (props: ICarousal) => {
       }
     },
   );
-
-  const handleDoublePress = () => {
-    const now = Date.now(); // timestamp
-    if (now - lastTap < 300) {
-      onDoublePress();
-    }
-    lastTap = now;
-  };
 
   return (
     <View>

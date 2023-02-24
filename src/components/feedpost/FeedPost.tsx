@@ -10,14 +10,17 @@ import Carousal from '@components/carousal';
 import colors from '@app/theme/colors';
 import styles from './styles';
 import Comment from '@components/comment';
+import VideoPlayer from '@components/videoPlayer';
 import {IPost} from '@app/types/models';
 
 interface IFeedPost {
   post: IPost;
+  isVisible: boolean;
 }
 
 const FeedPost = (props: IFeedPost) => {
-  const {post} = props;
+  const {post, isVisible} = props;
+
   const [showExpandedDescription, setShowExpandedDescription] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -39,6 +42,14 @@ const FeedPost = (props: IFeedPost) => {
 
   if (post.images) {
     content = <Carousal images={post.images} onDoublePress={toggleLike} />;
+  }
+
+  if (post.video) {
+    content = (
+      <DoublePressable onDoublePress={toggleLike}>
+        <VideoPlayer uri={post.video} paused={!isVisible} />
+      </DoublePressable>
+    );
   }
 
   return (
