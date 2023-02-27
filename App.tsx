@@ -7,14 +7,12 @@ import ProfileScreen from '@app/screens/Profile/ProfileScreen';
 import EditProfileScreen from '@app/screens/EditProfile/EditProfileScreen';
 import PostUploadScreen from '@app/screens/PostUpload/PostUploadScreen';
 
+import Navigation from '@app/navigation';
+
 const App = () => {
   return (
     <View style={styles.application}>
-      {/* <CommentsScreen /> */}
-      {/* <HomeScreen /> */}
-      {/* <ProfileScreen /> */}
-      {/* <EditProfileScreen /> */}
-      <PostUploadScreen />
+      <Navigation />
     </View>
   );
 };

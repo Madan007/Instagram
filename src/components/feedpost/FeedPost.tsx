@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {Image, View, Text, Pressable} from 'react-native';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -23,6 +25,16 @@ const FeedPost = (props: IFeedPost) => {
 
   const [showExpandedDescription, setShowExpandedDescription] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+
+  const navigation = useNavigation();
+
+  const navigateToUserProfile = () => {
+    navigation.navigate('UserProfile', {userId: post.user.id});
+  };
+
+  const navigateToComments = () => {
+    navigation.navigate('Comments', {postId: post.id});
+  };
 
   const toggleLike = () => setIsLiked(like => !like);
 
@@ -63,7 +75,10 @@ const FeedPost = (props: IFeedPost) => {
           style={styles.userAvatar}
         />
 
-        <Text style={styles.userName}> {post.user.username} </Text>
+        <Text onPress={() => navigateToUserProfile()} style={styles.userName}>
+          {' '}
+          {post.user.username}{' '}
+        </Text>
 
         <Entypo
           name="dots-three-horizontal"
@@ -128,7 +143,7 @@ const FeedPost = (props: IFeedPost) => {
         </Text>
 
         {/* Comments */}
-        <Text style={styles.greyText}>
+        <Text style={styles.greyText} onPress={() => navigateToComments()}>
           View all {post.noOfComments} comments
         </Text>
         {post.comments.map((comment: any) => (

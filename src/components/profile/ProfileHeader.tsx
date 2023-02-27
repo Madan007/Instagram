@@ -1,5 +1,6 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
 import Button from '@app/components/button';
@@ -7,6 +8,7 @@ import {IProfile} from '@app/types/models';
 
 const ProfileHeader = (props: IProfile) => {
   const {user} = props;
+  const navigation = useNavigation();
 
   return (
     <View style={styles.root}>
@@ -42,7 +44,7 @@ const ProfileHeader = (props: IProfile) => {
       <View style={styles.buttonContainer}>
         <Button
           text="Edit Profile"
-          onPress={() => console.warn('On Edit Profile ....')}
+          onPress={() => navigation.navigate('EditProfile')}
         />
         <Button
           text="Another Button"

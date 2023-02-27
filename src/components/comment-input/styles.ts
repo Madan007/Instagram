@@ -6,6 +6,7 @@ import fonts from '@app/theme/fonts';
 const styles = StyleSheet.create({
   container: {
     // height: 60,
+    marginBottom: 15,
     flexDirection: 'row',
     padding: 7,
     borderTopWidth: 1,
